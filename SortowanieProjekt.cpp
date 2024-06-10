@@ -1,18 +1,6 @@
-﻿#include <iostream>
+﻿#include "Sorting.h"
 #include <algorithm>
-/*
-Napisz program który pozwoli na posortowanie tabeli w języku C++ następującymi algorytmami:
- Sortowanie bąbelkowe
- Sortowanie przez scalanie
- Sortowanie szybkie
- Sortowanie przez kopcowanie
-Program powinien pozwalać na wybranie algorytmu sortowania.
-Tablica wejściowa powinna być podana w formie pliku tekstowego z wartościami podanymi w
-kolejnych liniach.
-Wyjście powinno być zapisywane do pliku tekstowego w formie analogicznej do pliku
-wejściowego.
 
-*/
 
 /* Funkcja realizujaca algorytm sortowania babelkowego
 * parameter tab - ciag do posortowania
@@ -206,7 +194,4 @@ void mergeSort(int* tab, int left, int right, bool isIncreasing) {
     merge(tab, left, mid, right, isIncreasing);
 }
 
-int main(){
-
-}
 
