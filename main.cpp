@@ -1,5 +1,6 @@
-﻿#include <iostream>
-#include "Sorting.h"
+﻿#include "Sorting.h"
+#include "FileManager.h"
+#include <iostream>
 
 /*
 Napisz program który pozwoli na posortowanie tabeli w języku C++ następującymi algorytmami:
@@ -16,17 +17,36 @@ wejściowego.
 */
 
 int main() {
+    // sprawdzenie pracy z plikami odczytu/zapisu oraz sortowan
+    std::string inputFilename = "FileInput.txt";
+    std::string outputFilename = "FileOutput.txt";
 
-    const int n = 5;
-    int tab[n] = { 1, 7, 3, 4, 9 };
+    int n = 0;
+    int* tab;
+    try {
+        readData(inputFilename, tab, n);
+        for (int i = 0; i < n; ++i) { // Dane przed sortowaniem
+            std::cout << tab[i] << " ";
+        }
 
-    // bubbleSort(tab, n, false);
-    // quickSort(tab, 0, n - 1, true);
-    // heapSort(tab, n, true);
-    mergeSort(tab, 0, n - 1, false);
-    for (int i = 0; i < n; ++i) {
-        std::cout << tab[i] << " ";
+        // bubbleSort(tab, n, false);
+        // quickSort(tab, 0, n - 1, true);
+        // heapSort(tab, n, true);
+        mergeSort(tab, 0, n - 1, false);
+
+        std::cout << "\n";
+        for (int i = 0; i < n; ++i) { // Dane po sortowaniu
+            std::cout << tab[i] << " ";
+        }
+
+        writeData(outputFilename, tab, n);
+        std::cout << "\nData sorted and written to " << outputFilename << std::endl;
+        delete[] tab;
     }
+    catch (const std::exception& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+    
 
     return 0;
 }
