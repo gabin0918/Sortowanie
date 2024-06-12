@@ -17,7 +17,6 @@ wejściowego.
 */
 
 int main() {
-    // sprawdzenie pracy z plikami odczytu/zapisu oraz sortowan
     std::string inputFilename = "FileInput.txt";
     std::string outputFilename = "FileOutput.txt";
 
@@ -27,8 +26,10 @@ int main() {
 
     int n = 0;
     int* tab;
+    bool isIncreasing = true; // zalozenie, ze uzytkownik wybierze porzadek niemalejacy
+
     try {
-        readData(inputFilename, tab, n);
+        readData(inputFilename, tab, n); // odczyt danych z pliku
         
         std::cout << "\nData for sorting: " << std::endl;
         for (int i = 0; i < n; ++i) { // Dane przed sortowaniem
@@ -44,25 +45,21 @@ int main() {
         std::cout << "Choose sorting type:\n1 - ascending\n2 - descending" << std::endl;
         while (choiceType > 2 || choiceType < 1) std::cin >> choiceType;
 
+        if (choiceType == 2) isIncreasing = false; // zmiana wartosci, jesli zalozenie uzytkownik wybierze porzadek nierosnacy
+
         switch (choice)
         {
         case 1:
-            
-            
-
             start = std::chrono::system_clock::now();
-            if(choiceType == 1 ) bubbleSort(tab, n, true);
-            if(choiceType == 2 ) bubbleSort(tab, n, false);
+            bubbleSort(tab, n, isIncreasing);
             end = std::chrono::system_clock::now();
             time = end-start;
             std::cout <<"Sorting time in miliseconds for bubble sort: " << time.count() * 1000000 << std::endl;
             break;
-        
 
         case 2:
             start = std::chrono::system_clock::now();
-            if(choiceType == 1 ) quickSort(tab, 0, n - 1, true);
-            if(choiceType == 2 ) quickSort(tab, 0, n - 1, false);
+            quickSort(tab, 0, n - 1, isIncreasing);
             end = std::chrono::system_clock::now();
             time = end-start;
             std::cout <<"Sorting time in miliseconds for quick sort: " << time.count() * 1000000<< std::endl;
@@ -70,8 +67,7 @@ int main() {
 
         case 3:
             start = std::chrono::system_clock::now();
-            if(choiceType == 1 ) heapSort(tab, n, true);    
-            if(choiceType == 2 ) heapSort(tab, n, false);    
+            heapSort(tab, n, isIncreasing);
             end = std::chrono::system_clock::now();
             time = end-start;
             std::cout <<"Sorting time in miliseconds for heap sort: " << time.count() * 1000000 << std::endl;
@@ -79,23 +75,17 @@ int main() {
 
         case 4:
             start = std::chrono::system_clock::now();
-            if(choiceType == 1 ) mergeSort(tab, 0, n - 1, true);
-            if(choiceType == 2 ) mergeSort(tab, 0, n - 1, false);
+            mergeSort(tab, 0, n - 1, isIncreasing);
             end = std::chrono::system_clock::now();
             time = end-start;
             std::cout <<"Sorting time in miliseconds for merge sort: " << time.count() * 1000000 << std::endl;
             break;
         }
 
-        
-        
-
-
         std::cout << "Sorted data:\n";
         for (int i = 0; i < n; ++i) { // Dane po sortowaniu
             std::cout << tab[i] << " ";
         }
-
 
         writeData(outputFilename, tab, n);
         std::cout << "\nData sorted and written to " << outputFilename << std::endl;
@@ -105,6 +95,5 @@ int main() {
         std::cerr << "Error: " << e.what() << std::endl;
     }
     
-
     return 0;
 }

@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "Sorting.h"
-//#include "SortowanieProjekt.cpp"
 
 // Testy dla funkcji bubbleSort()
 TEST(SortingTest, BubbleSort) {
