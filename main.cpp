@@ -39,13 +39,20 @@ int main() {
         auto start = std::chrono::system_clock::now();
         auto end = std::chrono::system_clock::now();
         
+        int choiceType = -1;
+        
+        std::cout << "Choose sorting type:\n1 - ascending\n2 - descending" << std::endl;
+        while (choiceType > 2 || choiceType < 1) std::cin >> choiceType;
+
         switch (choice)
         {
         case 1:
             
             
+
             start = std::chrono::system_clock::now();
-            bubbleSort(tab, n, true);
+            if(choiceType == 1 ) bubbleSort(tab, n, true);
+            if(choiceType == 2 ) bubbleSort(tab, n, false);
             end = std::chrono::system_clock::now();
             time = end-start;
             std::cout <<"Sorting time in miliseconds for bubble sort: " << time.count() * 1000000 << std::endl;
@@ -54,7 +61,8 @@ int main() {
 
         case 2:
             start = std::chrono::system_clock::now();
-            quickSort(tab, 0, n - 1, true);
+            if(choiceType == 1 ) quickSort(tab, 0, n - 1, true);
+            if(choiceType == 2 ) quickSort(tab, 0, n - 1, false);
             end = std::chrono::system_clock::now();
             time = end-start;
             std::cout <<"Sorting time in miliseconds for quick sort: " << time.count() * 1000000<< std::endl;
@@ -62,7 +70,8 @@ int main() {
 
         case 3:
             start = std::chrono::system_clock::now();
-            heapSort(tab, n, true);
+            if(choiceType == 1 ) heapSort(tab, n, true);    
+            if(choiceType == 2 ) heapSort(tab, n, false);    
             end = std::chrono::system_clock::now();
             time = end-start;
             std::cout <<"Sorting time in miliseconds for heap sort: " << time.count() * 1000000 << std::endl;
@@ -70,7 +79,8 @@ int main() {
 
         case 4:
             start = std::chrono::system_clock::now();
-            mergeSort(tab, 0, n - 1, true);
+            if(choiceType == 1 ) mergeSort(tab, 0, n - 1, true);
+            if(choiceType == 2 ) mergeSort(tab, 0, n - 1, false);
             end = std::chrono::system_clock::now();
             time = end-start;
             std::cout <<"Sorting time in miliseconds for merge sort: " << time.count() * 1000000 << std::endl;
