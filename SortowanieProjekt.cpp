@@ -10,7 +10,7 @@
 void bubbleSort(int* tab, int n, bool isIncreasing) {
     if (n < 2) return; // jesli liczba elementow jest mniejsza niz 2, to konczymy algorytm
     bool swapped; // zmienna pomocnicza - sygnalizuje czy w petli sortujacej zostalo wykonane przestawienie elementow
-    for (int i = 0; i < n - 1; i++) { // przejscie po calej dlugosci tablicy n-1 razy
+    for (int i = 0; i < n - 1; i++) { // przejscie po calej dlugosci tablicy n-2 razy
         swapped = false; 
         for (int j = 0; j < n - i - 1; j++) { // petla sortujaca - porownanie elementu sprawdzanego j z elementem nastepnym
             if (isIncreasing) {

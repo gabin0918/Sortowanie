@@ -1,0 +1,29 @@
+# Visual Studio
+.vscode/
+.vs/
+*.exe
+*.pdb
+*.obj
+*.log
+*.user
+*.ipch
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.opendb
+*.sln.docstates
+*.vcxproj.*
+
+# Build directories
+x64/
+Debug/
+Release/
+build/
+
+# Google Test binaries
+*.o
+*.a
+
+# Other temporary files
+*.tmp
+*.temp

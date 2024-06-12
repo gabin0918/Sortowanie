@@ -29,10 +29,10 @@ int main() {
             std::cout << tab[i] << " ";
         }
 
-        // bubbleSort(tab, n, false);
+        bubbleSort(tab, n, false);
         // quickSort(tab, 0, n - 1, true);
         // heapSort(tab, n, true);
-        mergeSort(tab, 0, n - 1, false);
+        //mergeSort(tab, 0, n - 1, false);
 
         std::cout << "\n";
         for (int i = 0; i < n; ++i) { // Dane po sortowaniu
